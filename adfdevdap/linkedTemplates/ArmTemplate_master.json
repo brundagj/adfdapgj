@@ -1,0 +1,543 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfdevdap"
+		},
+		"DS_ADLS_MIGRATIONa_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'DS_ADLS_MIGRATIONa'"
+		},
+		"LS_ADLS_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQUET'"
+		},
+		"LS_BLOB_CSV_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BLOB_CSV'"
+		},
+		"LS_BLOB_EXCEL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BLOB_EXCEL'"
+		},
+		"LS_BULK_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_BULK_CSV'"
+		},
+		"LS_BULK_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_BULK_PARQUET'"
+		},
+		"LS_CPY_SQL_CSV_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_CPY_SQL_CSV'"
+		},
+		"LS_GETMETADATA_CSV_DATA_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_GETMETADATA_CSV_DATA'"
+		},
+		"LS_GETMETADATA_FOREACH_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_GETMETADATA_FOREACH'"
+		},
+		"LS_GETMETADATA_PARQUET_DATA_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_GETMETADATA_PARQUET_DATA'"
+		},
+		"LS_GET_METADATA_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_GET_METADATA'"
+		},
+		"LS_GET_METADATA_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_GET_METADATA_SQL'"
+		},
+		"LS_INPUT_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_INPUT_SQL'"
+		},
+		"LS_INSERT_DATA_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_INSERT_DATA'"
+		},
+		"LS_LOOKUP_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_LOOKUP_CSV'"
+		},
+		"LS_LOOKUP_CSV_PREVIEW_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_LOOKUP_CSV_PREVIEW'"
+		},
+		"LS_LOOKUP_SQLSERVER_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_LOOKUP_SQLSERVER'"
+		},
+		"LS_OUTPUT_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_OUTPUT_ADLS'"
+		},
+		"LS_REST_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_REST_ADLS'"
+		},
+		"LS_SP_INSERT_DATA_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SP_INSERT_DATA'"
+		},
+		"LS_SQL_ADLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_ADLS'"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://dapdevkeyvault.vault.azure.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azuresqldbserver08.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dapdatabase"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Brunda"
+		},
+		"DS_ADLS_MIGRATIONa_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_ADLS_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azuresqldbserver08.database.windows.net"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dapdatabase"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "brunda"
+		},
+		"LS_BULK_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_BULK_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_CPY_SQL_CSV_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "CHANDAN\\SQLEXPRESS"
+		},
+		"LS_CPY_SQL_CSV_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_CPY_SQL_CSV_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adf_user"
+		},
+		"LS_GETMETADATA_CSV_DATA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_GETMETADATA_FOREACH_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_GETMETADATA_PARQUET_DATA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_GET_METADATA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_GET_METADATA_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "CHANDAN\\SQLEXPRESS"
+		},
+		"LS_GET_METADATA_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_GET_METADATA_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adf_user"
+		},
+		"LS_INPUT_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "CHANDAN\\SQLEXPRESS"
+		},
+		"LS_INPUT_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_INPUT_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adf_user"
+		},
+		"LS_INSERT_DATA_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "CHANDAN\\SQLEXPRESS"
+		},
+		"LS_INSERT_DATA_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_INSERT_DATA_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adf_user"
+		},
+		"LS_LOOKUP_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_LOOKUP_CSV_PREVIEW_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_LOOKUP_SQLSERVER_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "CHANDAN\\SQLEXPRESS"
+		},
+		"LS_LOOKUP_SQLSERVER_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_LOOKUP_SQLSERVER_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adf_user"
+		},
+		"LS_OUTPUT_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_REST_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevdap.dfs.core.windows.net/"
+		},
+		"LS_REST_API_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"LS_SP_INSERT_DATA_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SP_INSERT_DATA_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SP_INSERT_DATA_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adf_user"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "CHANDAN\\SQLEXPRESS"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adf_user"
+		},
+		"TestAzureKeyVault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://dapdevkeyvault.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfdevdap_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"DS_ADLS_MIGRATIONa_accountKey": {
+						"value": "[parameters('DS_ADLS_MIGRATIONa_accountKey')]"
+					},
+					"LS_ADLS_PARQUET_accountKey": {
+						"value": "[parameters('LS_ADLS_PARQUET_accountKey')]"
+					},
+					"LS_BLOB_CSV_connectionString": {
+						"value": "[parameters('LS_BLOB_CSV_connectionString')]"
+					},
+					"LS_BLOB_EXCEL_connectionString": {
+						"value": "[parameters('LS_BLOB_EXCEL_connectionString')]"
+					},
+					"LS_BULK_CSV_accountKey": {
+						"value": "[parameters('LS_BULK_CSV_accountKey')]"
+					},
+					"LS_BULK_PARQUET_accountKey": {
+						"value": "[parameters('LS_BULK_PARQUET_accountKey')]"
+					},
+					"LS_GETMETADATA_CSV_DATA_accountKey": {
+						"value": "[parameters('LS_GETMETADATA_CSV_DATA_accountKey')]"
+					},
+					"LS_GETMETADATA_FOREACH_accountKey": {
+						"value": "[parameters('LS_GETMETADATA_FOREACH_accountKey')]"
+					},
+					"LS_GETMETADATA_PARQUET_DATA_accountKey": {
+						"value": "[parameters('LS_GETMETADATA_PARQUET_DATA_accountKey')]"
+					},
+					"LS_GET_METADATA_accountKey": {
+						"value": "[parameters('LS_GET_METADATA_accountKey')]"
+					},
+					"LS_LOOKUP_CSV_accountKey": {
+						"value": "[parameters('LS_LOOKUP_CSV_accountKey')]"
+					},
+					"LS_LOOKUP_CSV_PREVIEW_accountKey": {
+						"value": "[parameters('LS_LOOKUP_CSV_PREVIEW_accountKey')]"
+					},
+					"LS_OUTPUT_ADLS_accountKey": {
+						"value": "[parameters('LS_OUTPUT_ADLS_accountKey')]"
+					},
+					"LS_REST_ADLS_accountKey": {
+						"value": "[parameters('LS_REST_ADLS_accountKey')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"DS_ADLS_MIGRATIONa_properties_typeProperties_url": {
+						"value": "[parameters('DS_ADLS_MIGRATIONa_properties_typeProperties_url')]"
+					},
+					"LS_ADLS_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_BULK_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_BULK_CSV_properties_typeProperties_url')]"
+					},
+					"LS_BULK_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('LS_BULK_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_GETMETADATA_CSV_DATA_properties_typeProperties_url": {
+						"value": "[parameters('LS_GETMETADATA_CSV_DATA_properties_typeProperties_url')]"
+					},
+					"LS_GETMETADATA_FOREACH_properties_typeProperties_url": {
+						"value": "[parameters('LS_GETMETADATA_FOREACH_properties_typeProperties_url')]"
+					},
+					"LS_GETMETADATA_PARQUET_DATA_properties_typeProperties_url": {
+						"value": "[parameters('LS_GETMETADATA_PARQUET_DATA_properties_typeProperties_url')]"
+					},
+					"LS_GET_METADATA_properties_typeProperties_url": {
+						"value": "[parameters('LS_GET_METADATA_properties_typeProperties_url')]"
+					},
+					"LS_LOOKUP_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_LOOKUP_CSV_properties_typeProperties_url')]"
+					},
+					"LS_LOOKUP_CSV_PREVIEW_properties_typeProperties_url": {
+						"value": "[parameters('LS_LOOKUP_CSV_PREVIEW_properties_typeProperties_url')]"
+					},
+					"LS_OUTPUT_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_OUTPUT_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_REST_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_REST_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_REST_API_properties_typeProperties_url": {
+						"value": "[parameters('LS_REST_API_properties_typeProperties_url')]"
+					},
+					"TestAzureKeyVault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('TestAzureKeyVault_properties_typeProperties_baseUrl')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfdevdap_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdevdap_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adfdevdap_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_CPY_SQL_CSV_password": {
+						"value": "[parameters('LS_CPY_SQL_CSV_password')]"
+					},
+					"LS_GET_METADATA_SQL_password": {
+						"value": "[parameters('LS_GET_METADATA_SQL_password')]"
+					},
+					"LS_INPUT_SQL_password": {
+						"value": "[parameters('LS_INPUT_SQL_password')]"
+					},
+					"LS_INSERT_DATA_password": {
+						"value": "[parameters('LS_INSERT_DATA_password')]"
+					},
+					"LS_LOOKUP_SQLSERVER_password": {
+						"value": "[parameters('LS_LOOKUP_SQLSERVER_password')]"
+					},
+					"LS_SP_INSERT_DATA_password": {
+						"value": "[parameters('LS_SP_INSERT_DATA_password')]"
+					},
+					"LS_SQL_ADLS_password": {
+						"value": "[parameters('LS_SQL_ADLS_password')]"
+					},
+					"LS_AzureSqlDatabase_properties_typeProperties_server": {
+						"value": "[parameters('LS_AzureSqlDatabase_properties_typeProperties_server')]"
+					},
+					"LS_AzureSqlDatabase_properties_typeProperties_database": {
+						"value": "[parameters('LS_AzureSqlDatabase_properties_typeProperties_database')]"
+					},
+					"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+						"value": "[parameters('LS_AzureSqlDatabase_properties_typeProperties_userName')]"
+					},
+					"LS_CPY_SQL_CSV_properties_typeProperties_server": {
+						"value": "[parameters('LS_CPY_SQL_CSV_properties_typeProperties_server')]"
+					},
+					"LS_CPY_SQL_CSV_properties_typeProperties_database": {
+						"value": "[parameters('LS_CPY_SQL_CSV_properties_typeProperties_database')]"
+					},
+					"LS_CPY_SQL_CSV_properties_typeProperties_userName": {
+						"value": "[parameters('LS_CPY_SQL_CSV_properties_typeProperties_userName')]"
+					},
+					"LS_GET_METADATA_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_GET_METADATA_SQL_properties_typeProperties_server')]"
+					},
+					"LS_GET_METADATA_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_GET_METADATA_SQL_properties_typeProperties_database')]"
+					},
+					"LS_GET_METADATA_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_GET_METADATA_SQL_properties_typeProperties_userName')]"
+					},
+					"LS_INPUT_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_INPUT_SQL_properties_typeProperties_server')]"
+					},
+					"LS_INPUT_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_INPUT_SQL_properties_typeProperties_database')]"
+					},
+					"LS_INPUT_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_INPUT_SQL_properties_typeProperties_userName')]"
+					},
+					"LS_INSERT_DATA_properties_typeProperties_server": {
+						"value": "[parameters('LS_INSERT_DATA_properties_typeProperties_server')]"
+					},
+					"LS_INSERT_DATA_properties_typeProperties_database": {
+						"value": "[parameters('LS_INSERT_DATA_properties_typeProperties_database')]"
+					},
+					"LS_INSERT_DATA_properties_typeProperties_userName": {
+						"value": "[parameters('LS_INSERT_DATA_properties_typeProperties_userName')]"
+					},
+					"LS_LOOKUP_SQLSERVER_properties_typeProperties_server": {
+						"value": "[parameters('LS_LOOKUP_SQLSERVER_properties_typeProperties_server')]"
+					},
+					"LS_LOOKUP_SQLSERVER_properties_typeProperties_database": {
+						"value": "[parameters('LS_LOOKUP_SQLSERVER_properties_typeProperties_database')]"
+					},
+					"LS_LOOKUP_SQLSERVER_properties_typeProperties_userName": {
+						"value": "[parameters('LS_LOOKUP_SQLSERVER_properties_typeProperties_userName')]"
+					},
+					"LS_SP_INSERT_DATA_properties_typeProperties_server": {
+						"value": "[parameters('LS_SP_INSERT_DATA_properties_typeProperties_server')]"
+					},
+					"LS_SP_INSERT_DATA_properties_typeProperties_database": {
+						"value": "[parameters('LS_SP_INSERT_DATA_properties_typeProperties_database')]"
+					},
+					"LS_SP_INSERT_DATA_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SP_INSERT_DATA_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_server')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_database')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdevdap_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "adfdevdap_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdevdap_ArmTemplate_2')]"
+			]
+		}
+	]
+}
