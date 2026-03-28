@@ -1,0 +1,25 @@
+{
+	"name": "AzureSqlDatabase1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "azuresqldbserver08.database.windows.net",
+			"database": "dapdatabase",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "Brunda",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "TestAzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "testsecret",
+				"secretVersion": "be78e513c4cb41d48106a73d743c15fc"
+			}
+		}
+	}
+}

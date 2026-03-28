@@ -1,0 +1,36 @@
+{
+	"name": "PL_LOOKUP_SQLSERVER",
+	"properties": {
+		"activities": [
+			{
+				"name": "LOOKUP_SQLSERVER",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT [AddressTypeID]\n      ,[Name]\n      ,[ModifiedDate]\n  FROM [AdventureWorks2019].[Person].[AddressType]\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_LOOKUP_SQLSERVER",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-03-24T15:32:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

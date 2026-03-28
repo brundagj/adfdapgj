@@ -1,0 +1,20 @@
+{
+	"name": "DS_GETMETADATA_FOREACH",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_GETMETADATA_PARQUET_DATA",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "output25032026"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

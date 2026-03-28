@@ -1,0 +1,20 @@
+{
+	"name": "DS_FILTERED_PARQUET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BULK_CSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "outputfiltereddata"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
